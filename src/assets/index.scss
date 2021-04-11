@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;800;900&display=swap");
+@import "./modal";
+@import "./single";
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.911);
+  overflow-x: hidden;
+  color: #f5f3f4;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  background-image: url("./img/bg.png");
+  background-repeat: no-repeat;
+  background-position: top;
+}
+canvas {
+  border: 2px solid rgb(151, 149, 149);
+}
+@media (max-width: 375px) {
+  body {
+    background-image: url("./img/bg-m.png");
+  }
+}
+
+#container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.title-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p {
+    text-decoration: none;
+    color: #ebefff;
+    text-transform: uppercase;
+  }
+}
+
+.container-header {
+  margin: 0px 0px 0px -5px;
+  position: relative;
+  border-bottom: 2px solid #4139aa;
+}
+.items-top {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1vh auto;
+
+  .logo {
+    font-weight: 800;
+    font-size: 1.4em;
+
+    p {
+      text-decoration: none;
+      color: #ebefff;
+      margin: 5vh 0vh 0vh 0vh;
+      display: inline;
+    }
+    .ball-logo {
+      display: inline;
+      padding: 0vh 1vh 0vh 1vh;
+    }
+  }
+  .user {
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    img {
+      width: 30px;
+    }
+    p {
+      text-transform: uppercase;
+      margin: 0;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .user {
+      img {
+        width: 35px;
+      }
+    }
+  }
+}
+
+.card {
+  background: #ffffff;
+  box-shadow: 0px 8px 20px rgba(13, 5, 34, 0.05);
+  border-radius: 10px 10px 0px 0px;
+  padding: 1vh;
+  color: #0c0225;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  color: #0c0225;
+
+  .logo-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      color: black;
+      img {
+        width: 50px;
+        margin-top: 1vh;
+      }
+    }
+  }
+}
+
+.card-bottom {
+  background: #ebefff;
+  border-radius: 0px 0px 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.02em;
+  color: rgba(12, 2, 37, 0.4);
+  margin: 0vh 0vh 3vh 0vh;
+
+  .teams-more {
+    max-width: 38px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.02em;
+    color: rgba(12, 2, 37, 0.4);
+    transform: rotate(-90deg);
+    cursor: pointer;
+  }
+
+  .teams-more:hover {
+    color: black;
+  }
+  .date {
+    width: 85%;
+    img {
+      margin: 0vh 1vh 0vh 1vh;
+    }
+    p {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+  .time {
+    width: 15%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2vh;
+  }
+}
+
+.signup-container {
+  width: 30%;
+  margin: 5% auto;
+  background: #ffffff;
+  box-shadow: 0px 8px 20px rgba(13, 5, 34, 0.05);
+  border-radius: 10px;
+  padding: 10vh;
+  color: #0c0225;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  color: #0c0225;
+  box-shadow: 0px 36px 53px -10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 36px 53px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 36px 53px -10px rgba(0, 0, 0, 0.75);
+
+  label {
+    font-size: 18px;
+  }
+  input {
+    width: 100%;
+    font-size: 28px;
+    border: none;
+    margin: 1vh 0vh 3vh 0vh;
+    border-bottom: 1px solid #544bd3;
+  }
+  input:focus {
+    outline: none;
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      height: 50px;
+      margin: 3vh 1vh 1vh 1vh;
+      background-color: #0c0225;
+      border: none;
+      color: #f5f3f4;
+      font-family: Poppins;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: -0.02em;
+      border-radius: 1vh;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .signup-container {
+    width: auto;
+    .btn {
+      button {
+        width: 100%;
+        border-radius: 1vh;
+      }
+    }
+  }
+}
+
+.title-and-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.diego {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 414px) {
+  .diego {
+    .diego-img {
+      margin-top: 9.5vh;
+      width: 100%;
+    }
+  }
+}
