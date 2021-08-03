@@ -12,7 +12,7 @@ function HomeContainer({ user }) {
     method: "GET",
     url: "https://api-football-v1.p.rapidapi.com/v2/fixtures/live",
     headers: {
-      "x-rapidapi-key": "734ffd471bmsh68e9a4996bead63p1a0350jsnacd10ba8bc28",
+      "x-rapidapi-key": "1c6c24529fmsh0afc136745a975fp190272jsn2d675f5efab9",
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
     },
   };
@@ -44,14 +44,7 @@ function HomeContainer({ user }) {
     }
   };
 
-  return (
-    <Home
-      data={data.api}
-      viewMore={viewMore}
-      openModal={modal}
-      setModal={setModal}
-    />
-  );
+  return <Home data={data.api} viewMore={viewMore} openModal={modal} setModal={setModal} />;
 }
 
 export default HomeContainer;

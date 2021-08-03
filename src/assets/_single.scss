@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 .single-container {
   background: #ffffff;
   border-radius: 10px;
@@ -57,10 +58,8 @@
 
 .eventos {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
-  border-top: 1px solid #8080801c;
   h3 {
     margin-top: 10px;
   }
@@ -68,7 +67,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0.5vh;
+    margin-top: 0.1vh;
+    color: gray;
+    p {
+      margin: 1vh 0vh 1vh 1vh;
+    }
+  }
+}
+.eventos-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+
+  h3 {
+    margin-top: 10px;
+  }
+  .type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1vh;
     color: gray;
     p {
       margin: 1vh 0vh 1vh 1vh;
@@ -96,14 +115,27 @@
   border-radius: 10px;
 }
 
-.progress-container {
+.progresse-container {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  .progress {
+  .progresse {
     color: white;
     text-align: center;
   }
+}
+
+.test-flex {
+  margin-top: 10px;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.lineups {
+  display: flex;
 }

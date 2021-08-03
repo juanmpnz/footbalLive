@@ -1,33 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import {
-  FaRegClock,
-  FaFutbol,
-  FaExchangeAlt,
-  FaStop,
-  FaTrophy,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
+import { FaRegClock, FaFutbol, FaExchangeAlt, FaStop, FaTrophy, FaMapMarkerAlt } from "react-icons/fa";
 import Loader from "react-loader-spinner";
-
+import { Tabs, Tab } from "react-bootstrap/";
 function SingleComponent({ data }) {
   const history = useHistory();
+  const [key, setKey] = useState("home");
   let bg = "";
   let bg1 = "";
-
+  console.log(data[0].lineups[data[0].awayTeam]);
   return (
     <>
       {data.length ? (
         <>
+          <div className="teams-single" style={{ border: "none", margin: "0 auto", boxSizing: "contentBox" }}>
+            <div>
+              <img src={data[0].league.logo} alt="Local" style={{ width: 40, padding: 20 }} />
+            </div>
+            <div>
+              <img src={data[0].league.flag} alt="away" style={{ width: 40, padding: 20 }} />
+            </div>
+          </div>
           {data[0].statistics !== null ? (
             <div style={{ display: "none" }}>
               <>
-                {data[0].statistics["Ball Possession"].home >
-                data[0].statistics["Ball Possession"].away
+                {data[0].statistics["Ball Possession"].home > data[0].statistics["Ball Possession"].away
                   ? (bg = "green")
                   : (bg = "red")}
-                {data[0].statistics["Ball Possession"].home <
-                data[0].statistics["Ball Possession"].away
+                {data[0].statistics["Ball Possession"].home < data[0].statistics["Ball Possession"].away
                   ? (bg1 = "green")
                   : (bg1 = "red")}
               </>
@@ -49,7 +49,7 @@ function SingleComponent({ data }) {
               </div>
             </div>
             <div className="status">{data[0].status}</div>
-            <div className="eventos">
+            <div className="eventos-top">
               <br />
               {data[0] !== null ? (
                 <>
@@ -70,47 +70,22 @@ function SingleComponent({ data }) {
                     }}
                   >
                     <p>
-                      <FaTrophy
-                        color="#4139aa"
-                        style={{ margin: "0vh 1vh 0vh 0vh" }}
-                      />
+                      <FaTrophy color="#4139aa" style={{ margin: "0vh 1vh 0vh 0vh" }} />
                       {data[0].league.name}
                     </p>
 
                     <p>
-                      <FaMapMarkerAlt
-                        color="#4139aa"
-                        style={{ margin: "0vh vh 0vh 1vh" }}
-                      />
+                      <FaMapMarkerAlt color="#4139aa" style={{ margin: "0vh vh 0vh 1vh" }} />
                       {data[0].league.country}
                     </p>
                   </div>
 
-                  <div
-                    className="teams-single"
-                    style={{ border: "none", margin: "0 auto" }}
-                  >
-                    <div className="local">
-                      <img
-                        src={data[0].league.logo}
-                        alt="Local"
-                        style={{ width: 40, padding: 20 }}
-                      />
-                    </div>
-                    <div className="away">
-                      <img
-                        src={data[0].league.flag}
-                        alt="Local"
-                        style={{ width: 40, padding: 20 }}
-                      />
-                    </div>
-                  </div>
                   {data[0].statistics !== null ? (
                     <>
                       <div>Possession:</div>
-                      <div className="progress-container">
+                      <div className="progresse-container">
                         <div
-                          className="progress"
+                          className="progresse"
                           style={{
                             width: `${data[0].statistics["Ball Possession"].home}`,
                             background: bg,
@@ -119,7 +94,7 @@ function SingleComponent({ data }) {
                           {data[0].statistics["Ball Possession"].home}
                         </div>
                         <div
-                          className="progress"
+                          className="progresse"
                           style={{
                             width: `${data[0].statistics["Ball Possession"].away}`,
                             background: bg1,
@@ -136,9 +111,9 @@ function SingleComponent({ data }) {
                   {data[0].statistics !== null ? (
                     <>
                       <div>Fouls:</div>
-                      <div className="progress-container">
+                      <div className="progresse-container">
                         <div
-                          className="progress"
+                          className="progresse"
                           style={{
                             width: `50%`,
                             color: "black",
@@ -147,7 +122,7 @@ function SingleComponent({ data }) {
                           {data[0].statistics["Fouls"].home}
                         </div>
                         <div
-                          className="progress"
+                          className="progresse"
                           style={{
                             width: `50%`,
                             color: "black",
@@ -164,38 +139,34 @@ function SingleComponent({ data }) {
               )}
             </div>
             <div className="eventos">
-              <h3>Events:</h3>
-              {data[0].events !== null
-                ? data[0].events.map((e, i) => {
-                    return (
-                      <div className="type" key={i}>
-                        <FaRegClock
-                          color="#4139aa"
-                          style={{ margin: "0vh 1vh 0vh 0vh" }}
-                        />{" "}
-                        {e.elapsed}`
-                        {e.type === "Goal" ? (
-                          <FaFutbol style={{ margin: "0vh 1vh 0vh 1vh" }} />
-                        ) : null}
-                        {e.type === "subst" ? (
-                          <FaExchangeAlt
-                            style={{ margin: "0vh 1vh 0vh 1vh" }}
-                          />
-                        ) : null}
-                        {e.type === "Card" ? (
-                          <FaStop
-                            color={
-                              e.detail === "Yellow Card" ? "yellow" : "red"
-                            }
-                            style={{ margin: "0vh 1vh 0vh 1vh" }}
-                          />
-                        ) : null}
-                        <p>{e.teamName}</p>
-                        <p>- {e.player}</p>
-                      </div>
-                    );
-                  })
-                : "No events"}
+              <Tabs id="controlled-tab-example" activeKey={key} onSelect={(k) => setKey(k)}>
+                <Tab eventKey="home" title="Events">
+                  <div className="test-flex">
+                    {data[0].events !== null
+                      ? data[0].events.map((e, i) => {
+                          return (
+                            <div className="type" key={i}>
+                              <FaRegClock color="#4139aa" style={{ margin: "0vh 1vh 0vh 0vh" }} /> {e.elapsed}`
+                              {e.type === "Goal" ? <FaFutbol style={{ margin: "0vh 1vh 0vh 1vh" }} /> : null}
+                              {e.type === "subst" ? <FaExchangeAlt style={{ margin: "0vh 1vh 0vh 1vh" }} /> : null}
+                              {e.type === "Card" ? (
+                                <FaStop
+                                  color={e.detail === "Yellow Card" ? "yellow" : "red"}
+                                  style={{ margin: "0vh 1vh 0vh 1vh" }}
+                                />
+                              ) : null}
+                              <p>{e.teamName}</p>
+                              <p>- {e.player}</p>
+                            </div>
+                          );
+                        })
+                      : "No events"}
+                  </div>
+                </Tab>
+                <Tab eventKey="lineup" title="Line-up">
+                  a
+                </Tab>
+              </Tabs>
             </div>
           </div>
           <div className="btn-back">

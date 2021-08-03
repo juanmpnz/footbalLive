@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;800;900&display=swap");
 @import "./modal";
+
 @import "./single";
 
 body {
@@ -162,6 +163,7 @@ canvas {
   .date {
     width: 85%;
     img {
+      width: 24px;
       margin: 0vh 1vh 0vh 1vh;
     }
     p {
