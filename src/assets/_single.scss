@@ -79,6 +79,7 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
+  margin-bottom: 15px;
 
   h3 {
     margin-top: 10px;
@@ -136,6 +137,22 @@
   flex-wrap: wrap;
 }
 
-.lineups {
+.lineupContainer {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .lineupData {
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .type {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
 }

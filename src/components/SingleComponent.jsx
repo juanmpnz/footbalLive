@@ -1,14 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { FaRegClock, FaFutbol, FaExchangeAlt, FaStop, FaTrophy, FaMapMarkerAlt } from "react-icons/fa";
 import Loader from "react-loader-spinner";
 import { Tabs, Tab } from "react-bootstrap/";
+
 function SingleComponent({ data }) {
   const history = useHistory();
   const [key, setKey] = useState("home");
+  const [lineupLocal, setLineupLocal] = useState(null);
+  const [lineupAway, setLineupAway] = useState(null);
   let bg = "";
   let bg1 = "";
-  console.log(data[0].lineups[data[0].awayTeam]);
+
+  useEffect(() => {
+    var homeTeamName = "";
+    var awayTeamName = "";
+
+    if (data.length && data[0].lineups !== null) {
+      homeTeamName = data[0].homeTeam.team_name;
+      awayTeamName = data[0].awayTeam.team_name;
+      setLineupLocal(data[0].lineups[homeTeamName]);
+      setLineupAway(data[0].lineups[awayTeamName]);
+    }
+    /*  if (lineupAway && lineupLocal === null) {
+      setLineupLocal(data[0].lineups[homeTeamName]);
+      setLineupAway(data[0].lineups[awayTeamName]);
+    } */
+    //console.log(lineupLocal.startXI);
+  }, [data]);
+
   return (
     <>
       {data.length ? (
@@ -164,7 +184,36 @@ function SingleComponent({ data }) {
                   </div>
                 </Tab>
                 <Tab eventKey="lineup" title="Line-up">
-                  a
+                  {lineupAway || lineupLocal !== null ? (
+                    <div className="lineupContainer">
+                      <div className="lineupData">
+                        <h3>Local</h3>
+                        {lineupLocal.startXI.map((e) => {
+                          return (
+                            <div className="type  ">
+                              <p>{e.number}</p>
+                              <p>{e.player}</p>
+                              <p>{e.pos}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div className="lineupData">
+                        <h3>Away</h3>
+                        {lineupAway.startXI.map((e) => {
+                          return (
+                            <div className="type">
+                              <p>{e.number}</p>
+                              <p>{e.player}</p>
+                              <p>{e.pos}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
+                    "No lineup available"
+                  )}
                 </Tab>
               </Tabs>
             </div>

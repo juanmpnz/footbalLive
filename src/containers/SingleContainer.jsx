@@ -17,7 +17,7 @@ function SingleContainer() {
 
   useEffect(() => {
     let mounted = true;
-    let timeOut = 10000;
+    let timeOut = 20000;
     if (data.length === 0) timeOut = 1;
     if (mounted) {
       setTimeout(() => {
